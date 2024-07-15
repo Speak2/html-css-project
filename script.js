@@ -1,3 +1,10 @@
+
+// new edition to the calender popup
+
+
+// new edition to the calender popup end
+
+
 // added this section
 
 function closeAllPopups() {
@@ -277,6 +284,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 //   calender feature integration uptill everything ok
+
 document.addEventListener('DOMContentLoaded', function () {
     const checkInDiv = document.querySelector('.search-item:nth-child(2)');
     const checkOutDiv = document.querySelector('.search-item:nth-child(3)');
@@ -300,21 +308,35 @@ document.addEventListener('DOMContentLoaded', function () {
         calendarPopup.style.display = 'none';
     }
 
+    
+
     function renderCalendar() {
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth();
         const firstDay = new Date(year, month, 1);
         const lastDay = new Date(year, month + 1, 0);
         const daysInMonth = lastDay.getDate();
-
+        
+    
         currentMonthSpan.textContent = `${currentDate.toLocaleString('default', { month: 'long' })} ${year}`;
-
+    
         calendarGrid.innerHTML = '';
-
+    
+        // Add weekday names
+        const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        weekdays.forEach(day => {
+            const dayNameElement = document.createElement('div');
+            dayNameElement.classList.add('calendar-day', 'weekday-name');
+            dayNameElement.textContent = day;
+            calendarGrid.appendChild(dayNameElement);
+        });
+    
+        // Add empty cells for days before the first day of the month
         for (let i = 0; i < firstDay.getDay(); i++) {
             calendarGrid.appendChild(document.createElement('div'));
         }
-
+    
+        // Add days of the month
         for (let day = 1; day <= daysInMonth; day++) {
             const dayElement = document.createElement('div');
             dayElement.classList.add('calendar-day');
@@ -322,9 +344,14 @@ document.addEventListener('DOMContentLoaded', function () {
             dayElement.addEventListener('click', () => selectDate(new Date(year, month, day)));
             calendarGrid.appendChild(dayElement);
         }
-
+    
         updateCalendarSelection();
     }
+
+
+     
+
+    // change end here
 
     function selectDate(date) {
         if (!selectedCheckIn || (selectedCheckIn && selectedCheckOut)) {
@@ -353,6 +380,7 @@ document.addEventListener('DOMContentLoaded', function () {
             checkOutInput.value = formatDate(selectedCheckOut);
         }
     }
+ 
 
     function updateCalendarSelection() {
         const days = calendarGrid.querySelectorAll('.calendar-day');
@@ -370,6 +398,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+ 
 
     function formatDate(date) {
         return date.toLocaleDateString('en-US', {
@@ -625,3 +654,127 @@ document.addEventListener('click', function(event) {
         closeAllPopups();
     }
 });
+
+
+// open up feature anywhere,anyweek and add guest start
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Helper function to toggle popup display
+    function togglePopup(popup) {
+        if (popup) {
+            popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
+        }
+    }
+
+    // Anywhere button
+    const anywhereButton = document.querySelector('button.search-option');
+    const regionPopup = document.querySelector('.region-popup');
+    if (anywhereButton && regionPopup) {
+        anywhereButton.addEventListener('click', function() {
+            togglePopup(regionPopup);
+        });
+    }
+
+    // Any week button
+    const anyWeekButton = Array.from(document.querySelectorAll('button.search-option')).find(button => button.textContent.trim() === 'Any week');
+    const calendarPopup = document.querySelector('.calendar-popup');
+    if (anyWeekButton && calendarPopup) {
+        anyWeekButton.addEventListener('click', function() {
+            togglePopup(calendarPopup);
+        });
+    }
+
+    // Add guests button
+    const addGuestsButton = Array.from(document.querySelectorAll('button.search-option')).find(button => button.textContent.trim() === 'Add guests');
+    const guestsPopup = document.getElementById('guestsPopup');
+    if (addGuestsButton && guestsPopup) {
+        addGuestsButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            togglePopup(guestsPopup);
+        });
+    }
+
+    // Close popups when clicking outside
+    document.addEventListener('click', function(event) {
+        const popups = [regionPopup, calendarPopup, guestsPopup];
+        const buttons = [anywhereButton, anyWeekButton, addGuestsButton];
+        
+        popups.forEach((popup, index) => {
+            if (popup && !popup.contains(event.target) && event.target !== buttons[index]) {
+                popup.style.display = 'none';
+            }
+        });
+    });
+});
+
+// open up feature anywhere,anyweek and add guest end
+
+
+// buttons on the calender feature start
+
+document.querySelectorAll('.flexible-date').forEach(button => {
+    button.addEventListener('click', function() {
+      const days = this.getAttribute('data-days');
+      const input = document.getElementById('date-input');
+      const rangeText = `± ${days} days`;
+      const currentValue = input.value.trim();
+  
+      // Check if the input already contains a `± X days` phrase
+      const regex = /± \d+ days/;
+      if (regex.test(currentValue)) {
+        // Replace the existing `± X days` phrase with the new one
+        input.value = currentValue.replace(regex, rangeText);
+      } else {
+        // Append the new `± X days` phrase to the input value
+        input.value = currentValue ? `${currentValue} ${rangeText}` : rangeText;
+      }
+    });
+  });
+  
+  document.querySelector('.exact-dates').addEventListener('click', function() {
+    const input = document.getElementById('date-input');
+    const currentValue = input.value.trim();
+  
+    // Remove any `± X days` phrase from the input value
+    const regex = /± \d+ days/;
+    input.value = currentValue.replace(regex, '').trim();
+  });
+
+// buttons on the calender feature end
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const shareButton = document.querySelector('.slider-btn.share-btn');
+    const sharePopup = document.getElementById('sharePopup');
+  
+    shareButton.addEventListener('click', function() {
+      sharePopup.style.display = 'block';
+    });
+  });
+
+
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const saveButton = document.getElementById('saveButton-2');
+    const heartIcon = saveButton.querySelector('.heart-icon');
+  
+    // Function to toggle button state
+    function toggleButton() {
+      const isActive = saveButton.classList.toggle('active');
+      heartIcon.style.fill = isActive ? 'red' : 'white';
+      localStorage.setItem('saveButton2State', isActive ? 'active' : 'inactive');
+    }
+  
+    // Add click event listener
+    saveButton.addEventListener('click', toggleButton);
+  
+    // Check and set initial state on page load
+    const savedState = localStorage.getItem('saveButton2State');
+    if (savedState === 'active') {
+      saveButton.classList.add('active');
+      heartIcon.style.fill = 'red';
+    } else {
+      heartIcon.style.fill = 'white';
+    }
+  });

@@ -43,7 +43,7 @@
             </div>
             <div class="search-item">
               <label>Check in</label>
-              <input type="text" placeholder="Add dates">
+              <input type="text" id="date-input" placeholder="Add dates">
             </div>
             <div class="search-item">
               <label>Check out</label>
@@ -115,9 +115,11 @@
                 <span class="current-month">July 2024</span>
                 <button class="next-month">&gt;</button>
               </div>
+              
               <div class="calendar-grid">
-                <!-- Calendar days will be dynamically inserted here -->
-              </div>
+                Calendar days will be dynamically inserted here  
+               </div> 
+               
             </div>
             <div class="flexible-options">
               <button class="exact-dates">Exact dates</button>
@@ -127,8 +129,9 @@
               <button class="flexible-date" data-days="7">± 7 days</button>
               <button class="flexible-date" data-days="14">± 14 days</button>
             </div>
-          </div>
+          </div>  
 
+          
 
 
           <!-- calender integration end  -->
@@ -144,7 +147,7 @@
             <h3>Guests</h3>
             <div class="guest-type">
               <div>
-                <span>Adults</span>
+                <span style="font-weight: 550;">Adults</span>
                 <p>Ages 13 or above</p>
               </div>
               <div class="guest-controls">
@@ -155,7 +158,7 @@
             </div>
             <div class="guest-type">
               <div>
-                <span>Children</span>
+                <span style="font-weight: 550;">Children</span>
                 <p>Ages 2-12</p>
               </div>
               <div class="guest-controls">
@@ -166,7 +169,7 @@
             </div>
             <div class="guest-type">
               <div>
-                <span>Infants</span>
+                <span style="font-weight: 550;">Infants</span>
                 <p>Under 2</p>
               </div>
               <div class="guest-controls">
@@ -177,7 +180,7 @@
             </div>
             <div class="guest-type">
               <div>
-                <span>Pets</span>
+                <span style="font-weight: 550;">Pets</span>
                 <p>Bringing a service animal?</p>
               </div>
               <div class="guest-controls">
@@ -246,19 +249,19 @@
     <h2>Share this place</h2>
     <div class="share-info">
       <img src="resources/image 3.webp" alt="Property Thumbnail">
-      <p>Rental unit in Lima • 4.92 • 1 bedrooms • 1 beds • 1 baths</p>
+      <p>Rental unit in Lima <span class="star-icon">&#9733;</span>4.92 • 1 bedrooms • 1 beds • 1 baths</p>
     </div>
     <div class="share-options">
-      <button id="copyLink">Copy Link</button>
-      <button>Email</button>
-      <button>Messages</button>
-      <button>WhatsApp</button>
-      <button>Messenger</button>
-      <button>Facebook</button>
-      <button>Twitter</button>
-      <button>Embed</button>
-      <button>More options</button>
-    </div>
+      <button id="copyLink"><img src="resources/icons/copy.png" alt="Copy Link">Copy Link</button>
+      <button><img src="resources//icons/mail.png" alt="Email">Email</button>
+      <button><img src="resources/icons/chat.png" alt="Messages">Messages</button>
+      <button><img src="resources/icons/whatsapp.png" alt="WhatsApp">WhatsApp</button>
+      <button><img src="resources/icons/messenger.png" alt="Messenger">Messenger</button>
+      <button><img src="resources/icons/facebook.png" alt="Facebook">Facebook</button>
+      <button><img src="resources/icons/twitter.png" alt="Twitter">Twitter</button>
+      <button><img src="resources/icons/link.png" alt="Embed">Embed</button>
+      <button><img src="resources/icons/more.png" alt="More options">More options</button>
+  </div>
   </div>
 </div>
 
@@ -272,7 +275,12 @@
       <div class="slider-buttons">
         <button class="slider-btn share-btn"><img src="resources/share.png" alt="Heart" class="heart-icon-1"></button>
         <div class="right-buttons">
-          <button class="slider-btn save-btn"><img src="resources/heart.png" alt="Heart" class="heart-icon-2"></button>
+          <button id="saveButton-2" class="search-option heart-button">
+            <svg class="heart-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16,28.261c0,0-14-7.926-14-17.046c0-9.356,13.159-10.399,14-0.454c1.011-9.938,14-8.903,14,0.454
+              C30,20.335,16,28.261,16,28.261z"/>
+            </svg> 
+          </button>
         </div>
         <div class="image-counter">1 / 5</div>
       </div>
@@ -293,7 +301,7 @@
       </div>
       <button class="show-all-photos">
         <span class="button-icon"> &#8942;&#8942;&#8942;</span>
-        Show all photos
+        Show all photos 
       </button>
     </div>
 
