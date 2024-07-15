@@ -1,6 +1,6 @@
 # Property Details Website
 
-Welcome to the Property Details Website repository! This project showcases property details, features, rules, and safety information for residential flats. The website is built with HTML and CSS, ensuring responsiveness across various devices, including mobile phones.
+Welcome to the Property Details Website repository! This project showcases property details, features, rules, and safety information for residential flats. The website is built with HTML and CSS and javas-cript, ensuring responsiveness across various devices, including mobile phones.
 
 ## Features
 
@@ -8,6 +8,13 @@ Welcome to the Property Details Website repository! This project showcases prope
 - **Super Host & Co-Host:** Highlight super host and co-host information for enhanced credibility.
 - **Features & Rules:** List the features offered by each property and specify rules for guests' safety and comfort.
 - **Features & Rules:**  Slider for the mobile view
+- **Features & Rules:** header drop-down search feature
+- **Features & Rules:** Calendar integration to the check-in and check-out section of the search bar
+- **Features & Rules:** A guest tracking counter
+- **Features & Rules:** a gallary for photo view.
+- **Features & Rules:** state preserve heart icon both integrated for the mobile view and desktop view
+- **Features & Rules:** Share feature with copy to clipboard API integration both in mobile and desktop view
+- **Features & Rules:** a destination setter popup module that automatically fills in the input boxes by selecting any of the cell contents
 
 ## Getting Started
 
@@ -20,7 +27,7 @@ To run the website locally or contribute to the project, follow these steps:
 ### Clone the Repository
 
 ```bash
-- git clone https://github.com/your-username/property-details-website.git 
+- git clone https://github.com/your-username/html-css-project.git 
 - cd property-details-website 
 ```
 
@@ -34,7 +41,7 @@ Contributions are welcome! Here's how you can contribute:
 
 ### Fork the Repository
 ```bash
-- git clone https://github.com/your-username/property-details-website.git
+- git clone https://github.com/your-username/html-css-project.git
 - cd property-details-website
 ```
 ### Create a New Branch
